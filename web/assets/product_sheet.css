@@ -1,0 +1,68 @@
+.container {
+  position: relative;
+  background-color: whitesmoke;margin-left: 15px;margin-right: 15px;
+}
+
+.content {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container:hover .content {
+  opacity: 0.3;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: tomato;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+  border-radius: 0px;
+  border: 0px;
+  width: 250px;
+  margin-top: 10px
+}
+
+.middle:hover .text {
+  background-color: #4da0dc
+}
+
+.pagination {
+  display: inline-block;
+  padding: 20px 20px
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+}
+
+.pagination a.active {
+  background-color: #4da0dc;
+  color: white;
+  border: 1px solid #4da0dc;
+}
+.pagination a:hover:not(.active) {background-color: #ddd;}

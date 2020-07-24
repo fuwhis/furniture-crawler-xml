@@ -1,0 +1,91 @@
+.itemi { 
+    grid-area: image; 
+    text-align: center;
+}
+.itemc { 
+    grid-area: content; 
+    padding: 5px 0 ;
+    position: relative;
+    float: left;
+    margin-bottom: 30px;
+    background-size: cover;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        'image content content content content content content content content content content content content content content content content content content content content'
+        'image content content content content content content content content content content content content content content content content content content content content'
+        'image content content content content content content content content content content content content content content content content content content content content';
+
+    background-color: whitesmoke;
+    border-color: black;
+    border: 1px solid;
+}
+
+.itemc {
+    width: 70%;
+    height: 188px;
+    position: relative;
+    float: left;
+    margin-bottom: 30px;
+    background-size: cover;
+}
+.itemc:nth-child(even) {
+    margin-right: 4%;
+}
+@media (max-width: 90%) {
+    .itemc {
+        width: 100%;
+    }
+    .itemc:nth-child(even) {
+        margin-right: 0%;
+    }
+}
+.ribbon1 {
+    position: absolute;
+    top: -6.1px;
+    right: -40%;
+}
+.ribbon1:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 53px solid transparent;
+    border-right: 53px solid transparent;
+    border-top: 10px solid #F8463F;
+}
+.ribbon1 span {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-family: sans-serif;
+    color: white;
+    background: #F8463F;
+    font-size: 14px;
+    line-height: 1;
+    padding: 15px 8px 8px;
+    border-top-right-radius: 8px;
+    width: 90px;
+}
+.ribbon1 span:before, .ribbon1 span:after {
+    position: absolute;
+    content: "";
+}
+.ribbon1 span:before {
+    height: 6px;
+    width: 6px;
+    left: -6px;
+    top: 0;
+    background: #F8463F;
+}
+.ribbon1 span:after {
+    height: 6px;
+    width: 8px;
+    left: -8px;
+    top: 0;
+    border-radius: 8px 8px 0 0;
+    background: #C02031;
+}
+
