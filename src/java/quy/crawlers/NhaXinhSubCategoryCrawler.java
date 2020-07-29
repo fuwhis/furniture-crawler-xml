@@ -84,7 +84,7 @@ public class NhaXinhSubCategoryCrawler {
 //                                                        attrValue = reader.getAttributeValue("", "href");
 //                                                        System.out.println("subCategory: " + attrValue);
 //                                                        if (attrValue != null) {
-//                                                            // lam gi do
+//                                                            // lam gi do chua lam dc
 //                                                        }
                                                     }
                                                 }
