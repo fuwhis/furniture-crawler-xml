@@ -54,6 +54,7 @@ public class NoiThat5CCategoryCrawler {
         Map<Integer, String> results = new HashMap<>();
         XMLStreamReader reader = null;
         InputStream is = null;
+        Boolean continueConn = true;
         try {
             is = new ByteArrayInputStream(content.getBytes(Charset.forName("UTF-8")));
             reader = XMLHelper.parseFileUsingStAXCursor(is);
@@ -65,38 +66,59 @@ public class NoiThat5CCategoryCrawler {
                         String attrValue = reader.getAttributeValue("", "class");
                         if (attrValue != null) {
                             if (attrValue.contains("menu")) {
-                                while (reader.hasNext()) {
-                                    reader.next();
-                                    tagName = reader.getLocalName();
-                                    if (tagName.equals("ul")) {
-                                        reader.next();
+                                while (continueConn) {
+                                    currentCursor = reader.next();
+                                    if (currentCursor == XMLStreamConstants.START_ELEMENT) {
                                         tagName = reader.getLocalName();
-                                        if (tagName.equals("li")) {
-                                            reader.next();
-                                            tagName = reader.getLocalName();
-                                            if (tagName.equals("a")) {
-                                                attrValue = reader.getAttributeValue("", "class");
-                                                if (attrValue != null) {
-                                                    if (attrValue.equals("main-menu")) {
-                                                        attrValue = reader.getAttributeValue("", "href");
-                                                        System.out.println("get Attribute---------" + attrValue);
+                                        if (tagName.equals("ul")) {
+                                            while (continueConn) {
+                                                currentCursor = reader.next();
+                                                if (currentCursor == XMLStreamConstants.START_ELEMENT) {
+                                                    tagName = reader.getLocalName();
+                                                    if (tagName.equals("a")) {
+                                                        attrValue = reader.getAttributeValue("", "class");
+                                                        if (attrValue != null) {
+                                                            if (attrValue.contains("main-menu")) {
+                                                                attrValue = reader.getAttributeValue("", "href");
+                                                                String roomName = reader.getElementText();
+                                                                System.out.println("roomName: " + roomName);
+                                                                // if statement
+                                                                // put href to key constant
+                                                                if (roomName.equalsIgnoreCase("Phòng khách")) {
+                                                                    results.put(KEY_LIVING_ROOM, attrValue);
+                                                                }
+                                                                if (roomName.equalsIgnoreCase("Phòng làm việc")) {
+                                                                    results.put(KEY_HOME_OFFICE, attrValue);
+                                                                }
+                                                                if (roomName.equalsIgnoreCase("Phòng ngủ")) {
+                                                                    results.put(KEY_BED_ROOM, attrValue);
+                                                                }
+                                                                if (roomName.equalsIgnoreCase("Phòng bếp")) {
+                                                                    results.put(KEY_DINNER_ROOM, attrValue);
+                                                                }
+                                                            }
+                                                        }
                                                     }
-
+                                                }
+                                                if (currentCursor == XMLStreamConstants.END_ELEMENT) {
+                                                    tagName = reader.getLocalName();
+                                                    if (tagName.equals("ul")) {
+                                                        continueConn = false;
+                                                    }
                                                 }
                                             }
-
                                         }
                                     }
                                 }
-
                             }
-                        }
 
+                        }
                     }
                 }
             }
-        } catch (XMLStreamException e) {
-            Logger.getLogger(NhaXinhCategoryCrawler.class.getName()).log(Level.SEVERE, null, e);
+
+        } catch (XMLStreamException ex) {
+            Logger.getLogger(NoiThat5CCategoryCrawler.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 if (reader != null) {
@@ -108,7 +130,7 @@ public class NoiThat5CCategoryCrawler {
             } catch (Exception e) {
             }
         }
-        System.out.println(results);
+        System.out.println("result: " + results);
         return results;
     }
 }

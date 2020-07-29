@@ -18,14 +18,17 @@ public class Main {
 
     
     public static void main(String[] args) {
-        NhaXinhCategoryCrawler pre = new NhaXinhCategoryCrawler();
-        Map<Integer, String> link = pre.getCatalogy();
+//        NhaXinhCategoryCrawler pre = new NhaXinhCategoryCrawler();
+//        Map<Integer, String> link = pre.getCatalogy();
+//        
+//        for (Map.Entry<Integer, String> entry : link.entrySet()) {
+//            NhaXinhSubCategoryCrawler c = new NhaXinhSubCategoryCrawler(entry.getKey(), entry.getValue());
+//            c.getCatagory();
+//        }
+        NoiThat5CCategoryCrawler nt = new NoiThat5CCategoryCrawler();
+        nt.getCatalogy();
         
-        for (Map.Entry<Integer, String> entry : link.entrySet()) {
-            NhaXinhSubCategoryCrawler c = new NhaXinhSubCategoryCrawler(entry.getKey(), entry.getValue());
-            c.getCatagory();
-        }
-//        NoiThat5CCategoryCrawler nt = new NoiThat5CCategoryCrawler();
-//        nt.getCatalogy();
+        
     }
+    
 }
