@@ -66,12 +66,12 @@ public class NoiThat5CCategoryCrawler {
                         String attrValue = reader.getAttributeValue("", "class");
                         if (attrValue != null) {
                             if (attrValue.contains("menu")) {
-                                while (continueConn) {
+                                while (reader.hasNext()) {
                                     currentCursor = reader.next();
                                     if (currentCursor == XMLStreamConstants.START_ELEMENT) {
                                         tagName = reader.getLocalName();
                                         if (tagName.equals("ul")) {
-                                            while (continueConn) {
+                                            while (reader.hasNext()) {
                                                 currentCursor = reader.next();
                                                 if (currentCursor == XMLStreamConstants.START_ELEMENT) {
                                                     tagName = reader.getLocalName();
