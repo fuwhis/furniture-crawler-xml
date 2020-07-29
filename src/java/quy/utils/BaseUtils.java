@@ -47,7 +47,7 @@ public class BaseUtils {
     public static final int GO_GO_DO = 1; // Gỗ gỏ đỏ
     
     public static final int GO_SOI_MY = 1; // Gỗ sồi Mỹ
-    public static final int GO_OC_CHO = 1; // Gỗ óc chó
+    public static final int GO_OC_CHO = 1; // Gỗ óc chó - aka Nam
     
     public static final int GO_SOI_NGA = 1; // Gỗ sồi Mỹ
     public static final int GO_XOAN = 1; // Gỗ xoan
