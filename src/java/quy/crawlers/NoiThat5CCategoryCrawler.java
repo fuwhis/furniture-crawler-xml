@@ -66,12 +66,12 @@ public class NoiThat5CCategoryCrawler {
                         String attrValue = reader.getAttributeValue("", "class");
                         if (attrValue != null) {
                             if (attrValue.contains("menu")) {
-                                while (continueConn) {
+                                while (reader.hasNext()) {
                                     currentCursor = reader.next();
                                     if (currentCursor == XMLStreamConstants.START_ELEMENT) {
                                         tagName = reader.getLocalName();
                                         if (tagName.equals("ul")) {
-                                            while (continueConn) {
+                                            while (reader.hasNext()) {
                                                 currentCursor = reader.next();
                                                 if (currentCursor == XMLStreamConstants.START_ELEMENT) {
                                                     tagName = reader.getLocalName();
@@ -81,7 +81,7 @@ public class NoiThat5CCategoryCrawler {
                                                             if (attrValue.contains("main-menu")) {
                                                                 attrValue = reader.getAttributeValue("", "href");
                                                                 String roomName = reader.getElementText();
-                                                                System.out.println("roomName: " + roomName);
+//                                                                System.out.println("roomName: " + roomName);
                                                                 // if statement
                                                                 // put href to key constant
                                                                 if (roomName.equalsIgnoreCase("Phòng khách")) {
@@ -130,7 +130,7 @@ public class NoiThat5CCategoryCrawler {
             } catch (Exception e) {
             }
         }
-        System.out.println("result: " + results);
+//        System.out.println("result: " + results);
         return results;
     }
 }

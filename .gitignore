@@ -83,6 +83,10 @@ nb-configuration.xml
 ## OS X
 ##############################
 .DS_Store
+*.java
+*.xml
+*.properties
+*.class
 build/web/WEB-INF/classes/quy/main/Main.class
 nbproject/private/private.properties
 nbproject/private/private.xml
