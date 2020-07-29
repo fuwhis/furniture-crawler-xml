@@ -87,3 +87,5 @@ nb-configuration.xml
 *.xml
 *.properties
 *.class
+build/web/WEB-INF/classes/quy/main/Main.class
+nbproject/private/private.properties
