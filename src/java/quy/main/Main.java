@@ -11,6 +11,7 @@ import quy.crawlers.NhaXinhCategoryCrawler;
 import quy.crawlers.NhaXinhProductCrawler;
 import quy.crawlers.NhaXinhSubCategoryCrawler;
 import quy.crawlers.NoiThat5CCategoryCrawler;
+import quy.crawlers.NoiThat5CProductCrawler;
 import quy.entities.Page;
 
 /**
@@ -37,7 +38,12 @@ public class Main {
 //            }
 //        }
         NoiThat5CCategoryCrawler nt = new NoiThat5CCategoryCrawler();
-        nt.getCatalogy();
+        NoiThat5CProductCrawler np = null;
+        Map<Integer, String> FiveCProLink = nt.getCatalogy();
+        for (String link : FiveCProLink.values()) {
+            np = new NoiThat5CProductCrawler(link);
+            np.run();
+        }
     }
-    
+
 }
