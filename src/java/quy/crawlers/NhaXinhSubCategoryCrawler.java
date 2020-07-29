@@ -28,7 +28,7 @@ import quy.utils.XMLHelper;
  * @author steve
  */
 public class NhaXinhSubCategoryCrawler {
-    
+
     private String content = "";
     private int key;
     private String url;
@@ -42,7 +42,7 @@ public class NhaXinhSubCategoryCrawler {
         listHref = new ArrayList<>();
         listHref.add(new Page(url, key));
     }
-    
+
     private void makeContentWellFrom(String url) {
         try {
             this.content = CheckWellformUrl.textWellForm(url);
@@ -54,12 +54,14 @@ public class NhaXinhSubCategoryCrawler {
             Logger.getLogger(NhaXinhSubCategoryCrawler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public List<Page> getCatagory() {
+
+    public List<String> getCatagory() {
         XMLStreamReader reader = null;
         InputStream is = null;
         boolean continueConn = true;
-        
+        boolean continueConn2 = true;
+        List<String> subCateLink = new ArrayList<>();
+
         try {
             is = new ByteArrayInputStream(content.getBytes(Charset.forName("UTF-8")));
             reader = XMLHelper.parseFileUsingStAXCursor(is);
@@ -76,22 +78,28 @@ public class NhaXinhSubCategoryCrawler {
                                     if (currentCursor == XMLStreamConstants.START_ELEMENT) {
                                         tagname = reader.getLocalName();
                                         if (tagname.equals("ul")) {
-                                            while (continueConn) {
+                                            continueConn2 = true;
+                                            while (continueConn2) {
                                                 currentCursor = reader.next();
                                                 if (currentCursor == XMLStreamConstants.START_ELEMENT) {
                                                     tagname = reader.getLocalName();
                                                     if (tagname.equals("a")) {
                                                         attrValue = reader.getAttributeValue("", "href");
-                                                        System.out.println("subCategory: " + attrValue);
-//                                                        if (attrValue != null) {
-//                                                            // lam gi do chua lam dc
-//                                                        }
+//                                                        System.out.println("subCategory: " + attrValue);
+                                                        if (!attrValue.equalsIgnoreCase("/khong-gian-song_m411.html")
+                                                                && !attrValue.equalsIgnoreCase("/cau-chuyen-thiet-ke_m228.html")
+                                                                && !attrValue.equalsIgnoreCase("/chi-dan-su-dung_m229.html")) {
+//                                                            addListHref(attrValue);
+//                                                            System.out.println("subCategory: " + attrValue);
+
+                                                            subCateLink.add(attrValue);
+                                                        }
                                                     }
                                                 }
                                                 if (currentCursor == XMLStreamConstants.END_ELEMENT) {
                                                     tagname = reader.getLocalName();
                                                     if (tagname.equals("ul")) {
-                                                        continueConn = false;
+                                                        continueConn2 = false;
                                                     }
                                                 }
                                             }
@@ -111,7 +119,7 @@ public class NhaXinhSubCategoryCrawler {
                                     }
                                     if (currentCursor == XMLStreamConstants.END_ELEMENT) {
                                         tagname = reader.getLocalName();
-                                        if (tagname.equals("ul")) {
+                                        if (tagname.equals("div")) {
                                             continueConn = false;
                                         }
                                     }
@@ -137,9 +145,9 @@ public class NhaXinhSubCategoryCrawler {
                 Logger.getLogger(NhaXinhSubCategoryCrawler.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return listHref;
+        return subCateLink;
     }
-    
+
     private void addListHref(String href) {
         int count = 0;
         for (int i = 0; i < listHref.size(); i++) {

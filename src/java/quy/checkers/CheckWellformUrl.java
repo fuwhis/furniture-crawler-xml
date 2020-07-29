@@ -41,7 +41,6 @@ public class CheckWellformUrl {
         String textContent = getStrings(connection.getInputStream());
         textContent = TextUtils.refineHtml(textContent);
         if (checkWellformUrl(textContent)) {
-            String content = textContent;
             return textContent;
         }
         return null;
