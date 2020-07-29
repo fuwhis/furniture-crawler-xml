@@ -13,6 +13,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/steve/Desktop/furniture-crawl/src/java/quy/crawlers/NoiThat5CCategoryCrawler.java</file>
+            <file>file:/C:/Users/steve/Desktop/furniture-crawl/src/java/quy/utils/XMLHelper.java</file>
+            <file>file:/C:/Users/steve/Desktop/furniture-crawl/src/java/quy/crawlers/NoiThat5CProductCrawler.java</file>
             <file>file:/C:/Users/steve/Desktop/furniture-crawl/src/java/quy/main/Main.java</file>
         </group>
     </open-files>
