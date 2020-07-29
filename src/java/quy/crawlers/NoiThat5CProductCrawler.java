@@ -98,11 +98,10 @@ public class NoiThat5CProductCrawler implements Runnable {
                                                                                                                         tagname = reader.getLocalName();
                                                                                                                         if (tagname.equals("a")) {
                                                                                                                             attrValue = reader.getAttributeValue("", "href");
-                                                                                                                            
+                                                                                                                            // met qua
                                                                                                                         }
                                                                                                                     }
                                                                                                                 }
-
                                                                                                             }
                                                                                                         }
                                                                                                     }
@@ -118,7 +117,6 @@ public class NoiThat5CProductCrawler implements Runnable {
                                                             }
                                                         }
                                                     }
-
                                                 }
                                             }
                                         }
