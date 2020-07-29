@@ -81,8 +81,8 @@ public class NhaXinhSubCategoryCrawler {
                                                 if (currentCursor == XMLStreamConstants.START_ELEMENT) {
                                                     tagname = reader.getLocalName();
                                                     if (tagname.equals("a")) {
-//                                                        attrValue = reader.getAttributeValue("", "href");
-//                                                        System.out.println("subCategory: " + attrValue);
+                                                        attrValue = reader.getAttributeValue("", "href");
+                                                        System.out.println("subCategory: " + attrValue);
 //                                                        if (attrValue != null) {
 //                                                            // lam gi do
 //                                                        }
@@ -90,24 +90,24 @@ public class NhaXinhSubCategoryCrawler {
                                                 }
                                                 if (currentCursor == XMLStreamConstants.END_ELEMENT) {
                                                     tagname = reader.getLocalName();
-                                                    if (tagname.equals("a")) {
+                                                    if (tagname.equals("ul")) {
                                                         continueConn = false;
                                                     }
                                                 }
                                             }
                                         }
-                                        if (currentCursor == XMLStreamConstants.START_ELEMENT) {
-                                            tagname = reader.getLocalName();
-                                            if (tagname.equals("hr")) {
-                                                attrValue = reader.getAttributeValue("", "class");
-                                                if (attrValue != null) {
-                                                    if (attrValue.equals("room_menu_seperate")) {
-//                                                        continueConn = true;
-                                                        reader.next();
-                                                    }
-                                                }
-                                            }
-                                        }
+//                                        if (currentCursor == XMLStreamConstants.START_ELEMENT) {
+//                                            tagname = reader.getLocalName();
+//                                            if (tagname.equals("hr")) {
+//                                                attrValue = reader.getAttributeValue("", "class");
+//                                                if (attrValue != null) {
+//                                                    if (attrValue.equals("room_menu_seperate")) {
+////                                                        continueConn = true;
+//                                                        reader.next();
+//                                                    }
+//                                                }
+//                                            }
+//                                        }
                                     }
                                     if (currentCursor == XMLStreamConstants.END_ELEMENT) {
                                         tagname = reader.getLocalName();
